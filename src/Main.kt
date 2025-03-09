@@ -106,7 +106,8 @@ fun main() {
 }
 
 /**
- * Creates and returns a Mutable List, size NUMCAGES,
+ * Creates and returns a Mutable Lis
+ * t, size NUMCAGES,
  * populated with strings representing empty cages
  */
 fun setupCages(): MutableList<String> {
@@ -120,9 +121,10 @@ fun setupCages(): MutableList<String> {
  * Put a given monkey into the specified cage number (1...MAX)
  */
 fun placeMonkeyInCage(cageList: MutableList<String>, cageNum: Int, name: String) {
+    println("Place a monkey in the cage: ")
+    val userInput = readln()
+    cageList.add(0, userInput)
     println("+++ Putting $name into cage $cageNum")
-
-    check(false)    // REPLACE THIS WITH YOUR CODE!
 }
 
 
@@ -138,8 +140,9 @@ fun placeMonkeyInCage(cageList: MutableList<String>, cageNum: Int, name: String)
  */
 fun listAllCages(cageList: List<String>) {
     println("CAGES")
-
-    check(false)    // REPLACE THIS WITH YOUR CODE!
+    for (i in 0..<cageList.size) {
+        println("${i + 1}: ${cageList[i]} ")
+    }
 }
 
 
@@ -154,8 +157,8 @@ fun listAllCages(cageList: List<String>) {
  */
 fun listAllMonkeys(cageList: List<String>) {
     println("MONKEYS")
-
-    check(false)    // REPLACE THIS WITH YOUR CODE!
+    for (i in 0..<cageList.size) {
+        println("${i + 1}: ${cageList[i]} ")
 }
 
 
