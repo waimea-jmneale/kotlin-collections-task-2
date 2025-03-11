@@ -122,9 +122,8 @@ fun setupCages(): MutableList<String> {
  */
 fun placeMonkeyInCage(cageList: MutableList<String>, cageNum: Int, name: String) {
     println("Place a monkey in the cage: ")
-    val userInput = readln()
-    cageList.add(0, userInput)
     println("+++ Putting $name into cage $cageNum")
+    cageList[cageNum - 1] = name
 }
 
 
@@ -140,8 +139,8 @@ fun placeMonkeyInCage(cageList: MutableList<String>, cageNum: Int, name: String)
  */
 fun listAllCages(cageList: List<String>) {
     println("CAGES")
-    for (i in 0..<cageList.size) {
-        println("${i + 1}: ${cageList[i]} ")
+    for (i in 0..cageList.size -1) {
+        println("- Cage ${i + 1}: ${cageList[i]} ")
     }
 }
 
@@ -157,8 +156,10 @@ fun listAllCages(cageList: List<String>) {
  */
 fun listAllMonkeys(cageList: List<String>) {
     println("MONKEYS")
-    for (i in 0..<cageList.size) {
-        println("${i + 1}: ${cageList[i]} ")
+    for (monkey in cageList) {
+        if (monkey == EMPTY) continue
+        println("- $monkey")
+    }
 }
 
 
@@ -172,8 +173,12 @@ fun listAllMonkeys(cageList: List<String>) {
  */
 fun listEmptyCages(cageList: List<String>) {
     println("EMPTY CAGES")
+    for (i in 0..<cageList.size) {
+        if (cageList[i] == EMPTY) {
+            println("- Cage ${i + 1} ")
+        }
 
-    check(false)    // REPLACE THIS WITH YOUR CODE!
+    }
 }
 
 
@@ -191,8 +196,13 @@ fun listEmptyCages(cageList: List<String>) {
  */
 fun listAllMonkeysAndCages(cageList: List<String>) {
     println("MONKEYS & CAGES")
+    for (i in 0..cageList.size -1 ) {
+        if (cageList[i] != EMPTY){
+            println(cageList[i].padEnd(8))
+            println("Cage ${i + 1}")
+        }
 
-    check(false)    // REPLACE THIS WITH YOUR CODE!
+    }
 }
 
 
@@ -200,8 +210,12 @@ fun listAllMonkeysAndCages(cageList: List<String>) {
  * Returns the number of monkeys found in the given cage list
  */
 fun monkeyCount(cageList: List<String>): Int {
+    var count = 0
+    for (i in 0..cageList.size - 1) {
+        if (cageList[i] != EMPTY) count++
 
-    return 0    // REPLACE THIS WITH YOUR CODE!
+    }
+    return count
 }
 
 
